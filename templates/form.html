@@ -22,7 +22,7 @@
 				<!-- Main -->
 					<div id="main">
 
-						<!-- Me -->
+						<!-- Home -->
 							<article id="home" class="panel intro">
 								<header>
 									<h1>Jan Krzyżanowski</h1>
@@ -34,12 +34,12 @@
 								</a>
 							</article>
 
-						<!-- Work -->
+						<!-- App -->
 							<article id="work" class="panel">
 								<header>
 									<h2>Work</h2>
 								</header>
-								<form method="POST" action="{{ url_for('home') }}" novalidate>
+								<form method="POST" action="{{ url_for('form') }}" novalidate>
                                     {{ form.csrf_token }}
                                     <p>{{ form.phone_number.label }} {{ form.phone_number(size=12) }}</p>
 
@@ -47,37 +47,21 @@
 
                                     <p>{{ form.flag }}</p>
 
-                                    <input type="submit" value="Log In">
+                                    <input type="submit" value="Submit">
                                 </form>
 
 							</article>
 
-						<!-- Contact -->
+						<!-- list -->
 							<article id="contact" class="panel">
 								<header>
 									<h2>Contact Me</h2>
 								</header>
-								<form action="#" method="post">
-									<div>
-										<div class="row">
-											<div class="col-6 col-12-medium">
-												<input type="text" name="name" placeholder="Name" />
-											</div>
-											<div class="col-6 col-12-medium">
-												<input type="text" name="email" placeholder="Email" />
-											</div>
-											<div class="col-12">
-												<input type="text" name="subject" placeholder="Subject" />
-											</div>
-											<div class="col-12">
-												<textarea name="message" placeholder="Message" rows="6"></textarea>
-											</div>
-											<div class="col-12">
-												<input type="submit" value="Send Message" />
-											</div>
-										</div>
-									</div>
-								</form>
+                                <ul>
+                                {% for call in list %}
+						        <li> Phone Number: {{ call.phone_number }}, City Code: {{ call.city_code }}</li>
+                                {% endfor %}
+                                </ul>
 							</article>
 
 					</div>
