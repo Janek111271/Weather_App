@@ -43,25 +43,24 @@
                                     {{ form.csrf_token }}
                                     <p>{{ form.phone_number.label }} {{ form.phone_number(size=12) }}</p>
 
-                                    <p>{{ form.city_code.label }} {{ form.city_code(size=12) }}</p>
-
-                                    <p>{{ form.flag }}</p>
+                                    <p>{{ form.city_name.label }} {{ form.city_name(size=12) }}</p>
 
                                     <input type="submit" value="Submit">
                                 </form>
 
 							</article>
 
-						<!-- list -->
+						<!-- Delete -->
 							<article id="contact" class="panel">
 								<header>
-									<h2>Contact Me</h2>
+									<h2>Delete Phone Number</h2>
 								</header>
-                                <ul>
-                                {% for call in list %}
-						        <li> Phone Number: {{ call.phone_number }}, City Code: {{ call.city_code }}</li>
-                                {% endfor %}
-                                </ul>
+                                <form method="POST" action="{{ url_for('form') }}" novalidate>
+                                    {{ delete.csrf_token }}
+                                    <p>{{ delete.phone_to_delete.label }} {{ delete.phone_to_delete(size=12) }}</p>
+
+                                    <input type="submit" value="Submit">
+                                </form>
 							</article>
 
 					</div>
