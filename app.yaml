@@ -4,3 +4,13 @@ entrypoint: gunicorn -b :$PORT app:app
 handlers:
 - url: /.*
   script: auto
+
+env_variables:
+  CLOUD_SQL_USERNAME: postgres
+  CLOUD_SQL_PASSWORD: Janek111
+  CLOUD_SQL_DATABASE_NAME: phone_book
+  CLOUD_SQL_CONNECTION: flask-weather-project:europe-central2:phone-book
+  SID: ACc15a6cf3f55545640a9aca50c3545c54
+  TOKEN: 7f93e44299a1c19aae8362b9fa8b9a64
+  NUMBER: +19034884572
+  API: 8eb01cf91cee0228664a2ea912a99319

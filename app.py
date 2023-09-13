@@ -15,7 +15,6 @@ import time
 app = Flask(__name__)
 app.secret_key = "12312311"
 Base = declarative_base()
-DATABASE_URL = 'sqlite:///phone_book.db'
 
 
 class Book(Base):
@@ -23,7 +22,7 @@ class Book(Base):
 
     id = Column(Integer, primary_key=True)
     phone_n = Column(String)
-    city_name = Column(String)  # Changed 'city_c' to 'city_name'
+    city_name = Column(String)
 
 
 # Twilio and OpenWeatherMap credentials
@@ -31,6 +30,14 @@ account_sid = environ.get('SID')
 auth_token = environ.get('TOKEN')
 twilio_phone_number = environ.get('NUMBER')
 map_API = environ.get('API')
+
+# DB connect
+db_user = environ.get('CLOUD_SQL_USERNAME')
+db_password = environ.get('CLOUD_SQL_PASSWORD')
+db_name = environ.get('CLOUD_SQL_DATABASE_NAME')
+db_connection_name = environ.get('CLOUD_SQL_CONNECTION')
+
+DATABASE_URL = f'postgresql+psycopg2://{db_user}:{db_password}@/{db_name}?host=/cloudsql/{db_connection_name}'
 
 
 # Forms setup
@@ -134,4 +141,3 @@ if __name__ == '__main__':
     while True:
         schedule.run_pending()
         time.sleep(1)
-
